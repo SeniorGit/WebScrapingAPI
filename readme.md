@@ -17,4 +17,20 @@ DEEPSEEK_API_KEY=your_api_key_here
 ```bash
 node main.js
 ```
+
 Pada root folder
+
+## Project Structure
+```bash
+WebScrapingAPI/
+├── main.js              # Main scraping logic      
+├── utils/
+│   ├── deepseek.js           # ai
+│   ├── filter.js          # filtering product data
+│   ├── product.js           # get product data
+│   └── scroll.js          # Scrollng Handler
+├── result/                # Generated JSON files
+├── .env.example           # Environment variables template
+├── package.json
+└── README.md
+```
