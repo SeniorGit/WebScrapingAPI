@@ -3,14 +3,14 @@
 Sebuah proyek web scraping untuk mengekstrak data produk dari eBay menggunakan **JavaScript**, **Puppeteer**, dan pemrosesan data berbasis **AI (DeepSeek API)**.  
 Scraper ini dirancang untuk mengambil detail produk, membersihkan data, dan menghasilkan output JSON yang lebih relevan dan siap digunakan.
 
-## ✨ Fitur
-- 🚀 Scraping data produk eBay menggunakan *headless browser* (Puppeteer)
-- 🛡️ Menggunakan **puppeteer-extra-plugin-stealth** untuk menghindari deteksi anti-bot
-- 🧠 Integrasi **DeepSeek AI** untuk pengolahan & penyaringan data
-- 📦 Output otomatis dalam format JSON
-- 🔧 Struktur modular sehingga mudah dikembangkan
+## Fitur
+- Scraping data produk eBay menggunakan *headless browser* (Puppeteer)
+- Menggunakan **puppeteer-extra-plugin-stealth** untuk menghindari deteksi anti-bot
+- Integrasi **DeepSeek AI** untuk pengolahan & penyaringan data
+- Output otomatis dalam format JSON
+- Struktur modular sehingga mudah dikembangkan
 
-## 📦 Instalasi
+## Instalasi
 Install semua dependencies berikut:
 
 ```bash
@@ -35,6 +35,7 @@ node main.js
 ```
 Pastikan perintah dijalankan dari root folder proyek.
 
+## Tutorial Penggunaan
 
 ## Struktur Folder
 ```bash
@@ -50,4 +51,5 @@ WebScrapingAPI/
 ├── package.json
 └── README.md
 ```
+
 
