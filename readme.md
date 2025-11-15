@@ -14,7 +14,7 @@ Scraper ini dirancang untuk mengambil detail produk, membersihkan data, dan meng
 Install semua dependencies berikut:
 
 ```bash
-npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth axios
+npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth axios openai
 ```
 
 ## Setup
@@ -51,5 +51,6 @@ WebScrapingAPI/
 ├── package.json
 └── README.md
 ```
+
 
 
