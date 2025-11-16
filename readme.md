@@ -102,7 +102,7 @@ WebScrapingAPI/
             .replace(/\s+/g, ' ')
             .replace(/<script[^>]*>.*?<\/script>/gi, '')
             .replace(/<style[^>]*>.*?<\/style>/gi, '')
-            //.substring(0, 6000) 
+            //.substring(0, 6000) // comment atau hapus
     ```
   - Jika menginginkan hasil description yang lebih lengkap dan detail ubah pada utils/deepseek.js pada line 45, anda bisa menambahkan maximum dari max_tokens atau menghapusnya
     Catatan: Penghapusan batas ini akan meningkatkan penggunaan kuota API.
@@ -111,11 +111,12 @@ WebScrapingAPI/
             messages: messages,
             response_format: { type: "json_object" },
             temperature: 0.1,
-            max_tokens: 500 // change or delete
+            //max_tokens: 500 // comment atau hapus
     ```
  Saran: Parameter max_tokens berguna untuk mengoptimalkan biaya operasional API.
 
     
+
 
 
 
