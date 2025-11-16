@@ -36,7 +36,7 @@ async function run() {
         await page.waitForSelector('div.su-card-container.su-card-container--vertical', { timeout: 30000 });
         
         // get product and save into data 
-        let products = await product.Product(page, browser); // change product to productAi for ai usage
+        let products = await productAi.Product(page, browser); // change product to productAi for ai usage
         data.push(...products);
         
         console.log(`Page ${i} completed: ${products.length} products`);

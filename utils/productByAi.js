@@ -7,7 +7,7 @@ async function Product(page, browser) {
     let result = [];
      
     // looping for each list card
-    for(let i = 2; i < 4; i++){
+    for(let i = 2; i < productCard.length; i++){
         const card = productCard[i]
         try {
             // get html
