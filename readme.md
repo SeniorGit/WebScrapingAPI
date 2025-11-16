@@ -96,7 +96,7 @@ WebScrapingAPI/
     ```
   ### Deepseek API
   - jika pada price terdapat "-" ubah pada utils/deepseek.js pada line 12, comment line tersebut atau hapus
-    HATI HATI penghapusan tersebut dapat membuat pemakaian balance pada deepseek platfomr menjadi lebih boros
+    Catatan: Penghapusan batas ini akan meningkatkan penggunaan kuota API.
     ```javascript
       const compressedListing = listingHTML
             .replace(/\s+/g, ' ')
@@ -105,7 +105,7 @@ WebScrapingAPI/
             //.substring(0, 6000) 
     ```
   - Jika menginginkan hasil description yang lebih lengkap dan detail ubah pada utils/deepseek.js pada line 45, anda bisa menambahkan maximum dari max_tokens atau menghapusnya
-    HATI HATI penghapusan tersebut dapat membuat pemakaian resource balance pada deepseek platform menjadi lebih boros
+    Catatan: Penghapusan batas ini akan meningkatkan penggunaan kuota API.
     ```javascript
       model: "deepseek-chat",
             messages: messages,
@@ -113,9 +113,10 @@ WebScrapingAPI/
             temperature: 0.1,
             max_tokens: 500 // change or delete
     ```
-  max_tokens berguna untuk membatasi jumlah output agar tidak boros resource
+ Saran: Parameter max_tokens berguna untuk mengoptimalkan biaya operasional API.
 
     
+
 
 
 
