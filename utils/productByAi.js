@@ -50,6 +50,7 @@ async function extractProductLink(card) {
 
 // get description from detail page
 async function getDescriptionFromLink(browser, link) {   
+    
     // open new page on same browser 
     const detailPage = await browser.newPage();
     

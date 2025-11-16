@@ -7,6 +7,7 @@ async function Product(page, browser) {
     // get for each list card
     for(let i = 2; i < productCard.length; i++){
         const card = productCard[i]
+
         // get title and price
         const title = await extractTitle(card);
         const price = await extractPrice(card);
@@ -27,6 +28,7 @@ async function Product(page, browser) {
 // getting title
 async function extractTitle(card){
     try{
+
         // get specific for title
         return await card.$eval('.su-card-container__header .s-card__title span.su-styled-text', node => 
             node.textContent.trim()
@@ -40,6 +42,7 @@ async function extractTitle(card){
 // getting price
 async function extractPrice(card){
     try{
+
         // get specific for price
         return await card.$eval('.s-card__attribute-row .s-card__price', node =>
             node.textContent.trim()
@@ -53,6 +56,7 @@ async function extractPrice(card){
 // getting product link
 async function extractProductLink(card) {
     try{
+
         // get specific for link each card
         return await card.$eval('.su-card-container__header a.s-card__link', node =>
             node.getAttribute('href')
@@ -65,10 +69,12 @@ async function extractProductLink(card) {
 
 // get detail description
 async function getDescriptionFromLink(browser, link) {
+
     // open new page on current browser
     const detailPage = await browser.newPage();
     
     try {
+        
         // wait until documentload or timeout on 15 seconds
         await detailPage.goto(link, { 
             waitUntil: 'networkidle2',
