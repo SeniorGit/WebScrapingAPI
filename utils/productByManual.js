@@ -1,19 +1,18 @@
-const filter = require('./filter')
-
-// Terima browser sebagai parameter
+// get title, price, and description
 async function Product(page, browser) { 
+    // get all html
     let productCard = await page.$$('div.su-card-container.su-card-container--vertical');
     let result = [];
     
-    for(let card of productCard){
+    // get for each list card
+    for(let i = 2; i < productCard.length; i++){
+        const card = productCard[i]
+        // get title and price
         const title = await extractTitle(card);
         const price = await extractPrice(card);
-        const productLink = await extractProductLink(card);
         
-        if (filter.isPlaceholderProduct(title) || filter.isPlaceholderPrice(price)){
-            continue;
-        }
-        
+        // getting link and get description
+        const productLink = await extractProductLink(card);        
         const description = await getDescriptionFromLink(browser, productLink);
         
         result.push({
@@ -24,9 +23,11 @@ async function Product(page, browser) {
     }
     return result;
 }
+
 // getting title
 async function extractTitle(card){
     try{
+        // get specific for title
         return await card.$eval('.su-card-container__header .s-card__title span.su-styled-text', node => 
             node.textContent.trim()
         );
@@ -39,6 +40,7 @@ async function extractTitle(card){
 // getting price
 async function extractPrice(card){
     try{
+        // get specific for price
         return await card.$eval('.s-card__attribute-row .s-card__price', node =>
             node.textContent.trim()
         ) 
@@ -51,6 +53,7 @@ async function extractPrice(card){
 // getting product link
 async function extractProductLink(card) {
     try{
+        // get specific for link each card
         return await card.$eval('.su-card-container__header a.s-card__link', node =>
             node.getAttribute('href')
         );
@@ -62,24 +65,23 @@ async function extractProductLink(card) {
 
 // get detail description
 async function getDescriptionFromLink(browser, link) {
-    if (!link) return '-';
-    
+    // open new page on current browser
     const detailPage = await browser.newPage();
     
     try {
+        // wait until documentload or timeout on 15 seconds
         await detailPage.goto(link, { 
             waitUntil: 'networkidle2',
-            timeout: 20000 
+            timeout: 15000 
         });
         
-    
-        await detailPage.waitForSelector('iframe#desc_ifr', { timeout: 15000 });
+        // accessing iframe to get descriptions
+        await detailPage.waitForSelector('iframe#desc_ifr', { timeout: 5000 });
         const iframeElement = await detailPage.$('iframe#desc_ifr');
         const frame = await iframeElement.contentFrame();
         
-       
+        // cleaning description
         const cleanDescription = await frame.$eval('.x-item-description-child', node => {
-            
             return node.textContent
                 .replace(/<[^>]*>/g, '') 
                 .replace(/\s+/g, ' ')     
@@ -91,7 +93,6 @@ async function getDescriptionFromLink(browser, link) {
         
     } catch (error) {
         console.log('Error:', error.message);
-        return 'No description available';
     } finally {
         await detailPage.close();
     }

@@ -13,6 +13,9 @@
   "dependencies": {
     "axios": "^1.13.2",
     "deepseek-api": "^1.0.6",
+    "dotenv": "^17.2.3",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
     "puppeteer": "^24.30.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
