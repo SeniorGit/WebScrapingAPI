@@ -1,4 +1,4 @@
-// get title, price, and description
+// get name, price, and description
 async function Product(page, browser) { 
     // get all html
     let productCard = await page.$$('div.su-card-container.su-card-container--vertical');
@@ -76,7 +76,7 @@ async function getDescriptionFromLink(browser, link) {
         });
         
         // accessing iframe to get descriptions
-        await detailPage.waitForSelector('iframe#desc_ifr', { timeout: 5000 });
+        await detailPage.waitForSelector('iframe#desc_ifr', { timeout: 15000 });
         const iframeElement = await detailPage.$('iframe#desc_ifr');
         const frame = await iframeElement.contentFrame();
         

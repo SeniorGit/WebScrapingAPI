@@ -61,7 +61,7 @@ async function getDescriptionFromLink(browser, link) {
         });
                 
         // get description inside iframe
-        await detailPage.waitForSelector('iframe#desc_ifr', { timeout: 1000 });
+        await detailPage.waitForSelector('iframe#desc_ifr', { timeout: 15000 });
         const frame = await (await detailPage.$('iframe#desc_ifr')).contentFrame();
         description = await frame.$eval('.x-item-description-child', node => {
             return node.textContent
